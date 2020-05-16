@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
+// import { useHistory, Link } from 'react-router-dom';
 
 export const CityName: React.FC = () =>{
 
@@ -14,13 +14,10 @@ export const CityName: React.FC = () =>{
           fetch('https://samples.openweathermap.org/data/2.5/forecast/hourly?q=&appid=b0069842425823d7a53daf72c6eb7429'+cityName)
               .then(async(res) =>{
                   let ans = await res.json()
-                  console.log(ans.cnt)
+                  localStorage.setItem('data', ans.list)
               })
   }
-  const hist = useHistory();
-    if(localStorage.length>0){
-        hist.push('/details')
-    }
+
   const isEnabled = cityName.length>0;
 
     return(
