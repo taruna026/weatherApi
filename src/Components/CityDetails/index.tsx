@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import {VictoryChart, VictoryLine, VictoryLabel} from "victory"
 
-export const CityDetails: React.FC = () =>{
+interface ICityDetails{
+    name: string
+}
+
+export const CityDetails: React.FC<ICityDetails> = (props:ICityDetails) =>{
 
     const [data, setData] = useState([]);
-    const name  = "Tonk"
+    const name = props.name
 
     const fetchCityData=()=>{
               fetch('https://samples.openweathermap.org/data/2.5/forecast/hourly?q=&appid=b0069842425823d7a53daf72c6eb7429'+name)
@@ -17,10 +21,6 @@ export const CityDetails: React.FC = () =>{
         fetchCityData();
     }, []);
 
-    // const graph = [data.map((entries:any)=>
-    //         {x: entries.dt, y: entries.main.humidity})
-    //       ];
-    
     const time_stamp = data.map((entries: any)=>entries.dt)
     const humidity = data.map((entries: any)=>entries.main.humidity)
     const pressure = data.map((entries: any)=>entries.main.pressure)
@@ -48,6 +48,7 @@ export const CityDetails: React.FC = () =>{
     
     return(
         <div>
+            {props.name}
         <VictoryChart>
   <VictoryLine
     interpolation = "natural"
