@@ -17,27 +17,40 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 
+.form-data{
+  width: 100%;
+
+}
+
 .input-box{
-  height: 40px;
-  width: 500px;
-  font-size: 25px;
-  padding-left: 20px;
+  position: relative;
+  height: 2em;
+  width: 40%;
+  font-size: 20px;
+  padding-left: 1%;
 }
 
 .btn{
-  margin-top: 40px;
+  position: relative;
+  margin-top: 20px;
   height: 40px;
-  width: 200px;
-  font-size: 20px;
+  width: 20%;
+  font-size: 15px;
 }
 
+.graph-container{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
 .App-link {
   color: #61dafb;
 }
+
 
 @keyframes App-logo-spin {
   from {

@@ -16,7 +16,7 @@ function App() {
     <div>
         <BrowserRouter>
         <Switch>
-        <Route exact={true} path='/' render={()=><CityName name={cityName} setName={onCityChange}/>} />
+          <Route exact={true} path='/' render={()=><CityName name={cityName} setName={onCityChange}/>} />
           <Route exact={true} path='/details' render={()=><CityDetails name={cityName}/>} />
         </Switch>
         </BrowserRouter>

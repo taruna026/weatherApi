@@ -13,7 +13,7 @@ export const CityName: React.FC<ICityName> = (props:ICityName) =>{
 
     return(
         <div className="App">
-        <form>
+        <form className="form-data">
           <input type="text" placeholder="Enter a city name" onChange={props.setName} value={props.name} className="input-box"/>
           <Link to='/details'><div><button className="btn" type="submit" disabled={!isEnabled}>Get the Forecast</button></div></Link>
         </form>
