@@ -12,6 +12,7 @@ function App() {
       setCity(event.target.value);
     }
 
+  //Rotuing for visiting different components of the web-page
   return (
     <div>
         <BrowserRouter>

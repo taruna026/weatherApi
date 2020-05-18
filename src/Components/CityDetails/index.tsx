@@ -10,6 +10,8 @@ export const CityDetails: React.FC<ICityDetails> = (props:ICityDetails) =>{
     const [data, setData] = useState([]);
     const name = props.name
 
+    //fetching the data from api for a particular city
+
     const fetchCityData=()=>{
               fetch('https://samples.openweathermap.org/data/2.5/forecast/hourly?q=&appid=b0069842425823d7a53daf72c6eb7429'+name)
                   .then(async(res) =>{
@@ -21,6 +23,7 @@ export const CityDetails: React.FC<ICityDetails> = (props:ICityDetails) =>{
         fetchCityData();
     },[]);
 
+    //extracting timestamp, humdity, pressure, temperature from the fetched data
     const time_stamp = data.map((entries: any)=>entries.dt)
     const humidity = data.map((entries: any)=>entries.main.humidity)
     const pressure = data.map((entries: any)=>entries.main.pressure)
@@ -30,6 +33,7 @@ export const CityDetails: React.FC<ICityDetails> = (props:ICityDetails) =>{
       const graph2 = [];
       const graph3 = [];
 
+      //converting the extracted data into co-ordinates of the graph
       for(var i=0; i<96; i++)
       {
           graph1.push({"x": time_stamp[i]/10000, "y": humidity[i]});
@@ -37,9 +41,10 @@ export const CityDetails: React.FC<ICityDetails> = (props:ICityDetails) =>{
           graph3.push({"x": time_stamp[i]/10000, "y": temp[i]});
       }
       
-    
+    //Plotting graphs
     return(
         <div className="graph-container">
+            {/* Graph between time and temperature */}
         <VictoryChart style={{ parent: { maxWidth: "50%" } }}>
         <VictoryLabel text="Temperature" x={225} y={30} textAnchor="middle"/>
             <VictoryLine
@@ -54,6 +59,7 @@ export const CityDetails: React.FC<ICityDetails> = (props:ICityDetails) =>{
                 style={{ tickLabels: { angle: -60 } }}
             />
         </VictoryChart>
+        {/* Graph between time and Pressure */}
         <VictoryChart style={{ parent: { maxWidth: "50%" } }}>
         <VictoryLabel text="Pressure" x={225} y={30} textAnchor="middle"/>
             <VictoryLine
@@ -67,6 +73,7 @@ export const CityDetails: React.FC<ICityDetails> = (props:ICityDetails) =>{
                 style={{ tickLabels: { angle: -60 } }}
             />
         </VictoryChart>
+        {/* Graph between time and Humidity */}
         <VictoryChart style={{ parent: { maxWidth: "50%" } }}>
             <VictoryLabel text="Humidity" x={225} y={30} textAnchor="middle"/>
             <VictoryLine

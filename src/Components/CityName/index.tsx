@@ -11,6 +11,7 @@ export const CityName: React.FC<ICityName> = (props:ICityName) =>{
     const name = props.name;
     const isEnabled = name.length>0;
 
+    //taking city name as input using react-forms
     return(
         <div className="App">
         <form className="form-data">
@@ -19,4 +20,4 @@ export const CityName: React.FC<ICityName> = (props:ICityName) =>{
         </form>
     </div>
     );
-}
+}   
